@@ -1,0 +1,282 @@
+{% load static %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Upload Assignment</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Unica University Template">
+    <meta name="keywords" content="event, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="shortcut icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i" rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- header section -->
+    <header class="header-section">
+        <div class="container">
+            <a href="index.html" class="site-logo "><img style="height: 4rem;" class="img-fluid"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9eh4yCFzLuX0uO4T-zRPeJmb1K-8-VO3eSyiDMmiesjplcnVWaSL1VyiVTQ1vWVf85-A&usqp=CAU"
+                    alt=""></a>
+            <div class="nav-switch">
+                <i class="fa fa-bars"></i>
+            </div>
+            <div class="header-info">
+                <div class="hf-item">
+                    <i class="fa fa-clock-o"></i>
+                    <p><span>Working time:</span>Monday - Friday: 08 AM - 06 PM</p>
+                </div>
+                <div class="hf-item">
+                    <i class="fa fa-map-marker"></i>
+                    <p><span>Find us:</span>Sarai Nain Singh, Jewar, 203135 UP</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header section end-->
+    <nav class="nav-section">
+        <div class="container">
+            <div class="nav-right">
+                {% if not user.is_authenticated %}
+                <a href="/login"><i class="ti ti-new-window"></i> Login</a>
+                {% endif %}
+
+                {% if user.is_authenticated and user.is_superuser %}
+                
+                <a href="/logout" id="adminDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-user"></i> Logout as
+                        <b>{{request.user.username | title}}</b></a>
+                        <a href="/portal"><i class="ti ti-server"></i> Admin Panel</a>
+                {% endif %}
+                {% if user.is_authenticated and not user.is_superuser %}
+                
+                <a href="/logout" id="adminDropdown"
+                        data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-user"></i> Logout as
+                        <b>{{request.user.username | title}}</b></a>
+                        <a href="/uploadassignment"><i class="ti ti-tag"></i> Assignment</a>
+                {% endif %}
+            </div>
+            <ul class="main-menu">
+                <li class=""><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Header section end -->
+    <!-- Hero section -->
+    <section class="container">
+        {% if messages %}
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            toastr.options = { "closeButton": true, "debug": false, "newestOnTop": true,
+                "progressBar": true, "positionClass": "toast-top-right", "preventDuplicates": true,
+                "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                "showMethod": "fadeIn", "hideMethod": "fadeOut"};
+            {% autoescape off %}
+                {% for msg in messages %}
+                    toastr.{{ msg.level_tag }}("{{ msg }}");
+                {% endfor %}
+            {% endautoescape %}
+        });
+    </script>
+{% endif %}
+        <div class="alert alert-primary text-primary text-end mt-5 text-center" style="border-radius: 13px; border-width:0 !important;">
+            <i class="ti ti-upload " style="font-size:2rem"></i>
+            <h3 class="text-center text-primary">Upload Assignment</h3>
+        </div>
+        <div class="card mb-5" style="border-radius: 13px;">
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    <div class="row">
+                        <div class="col-md-4 mb-0">
+                            {{ form.assignment_file|as_crispy_field }}
+                        </div>
+                        <div class="col-md-4 mb-0">
+                            {{ form.assignment_name|as_crispy_field }}
+                        </div>
+                        <div class="col-md-4 mb-0">
+                            {{ form.date_of_posting|as_crispy_field }}
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-0">
+                            {{ form.assignment_class|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6 mb-0">
+                            {{ form.assignment_subject|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary">
+                            <i class="ti ti-upload "></i> Upload
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="alert alert-success text-success text-end mt-5 text-center" style="border-radius: 13px; border-width:0 !important;">
+            <i class="ti ti-tag " style="font-size:2rem"></i>
+            <h3 class="text-center text-success">My Assignments</h3>
+        </div>
+        <div class="table-responsive mb-5">
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Assignment Name</th>
+                    <th scope="col">Uploaded on</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Subject</th>
+                    <th class="text-center" scope="col">Download</th>
+                    <th scope="col">Uploaded by</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in assignment %}
+                {% if i.uploaded_by == request.user.username %}
+                <tr>
+                    <td><span class="text-danger"><a href="{{i.assignment_file.url}}" target="_blank" class="text-danger">{{i.assignment_name}}</a></span></td>
+                    <td>{{i.date_of_posting}}</td>
+                    <td>{{i.assignment_class}}</td>
+                    <td>{{i.assignment_subject}}</td>
+                    <td class="text-center"><a href="{{i.assignment_file.url}}" download><span class="badge bg-primary"><i class="ti ti-download text-white"></i></span></a></td>
+                    <td>{{i.uploaded_by}}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    </section>
+    <!-- Hero section end -->
+
+
+    
+
+
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container footer-top">
+            <div class="row">
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <div class="about-widget">
+                        <img style="height: 4rem;" class="img-fluid"
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9eh4yCFzLuX0uO4T-zRPeJmb1K-8-VO3eSyiDMmiesjplcnVWaSL1VyiVTQ1vWVf85-A&usqp=CAU"
+                            alt="">
+                        <p>orem ipsum dolor sit amet, consecter adipiscing elite. Donec minos varius, viverra justo ut,
+                            aliquet nisl.</p>
+                        <div class="social pt-1">
+                            <a href=""><i class="fa fa-twitter-square"></i></a>
+                            <a href=""><i class="fa fa-facebook-square"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">USEFUL LINKS</h6>
+                    <ul>
+                        <li><a href="">Home</a></li>
+                        <li><a href="">About us</a></li>
+                        <li><a href="">Services</a></li>
+                        <li><a href="">Events</a></li>
+                        <li><a href="">Features</a></li>
+                    </ul>
+                    <div class="dobule-link">
+                        <!-- <ul>
+                            <li><a href="">Home</a></li>
+                            <li><a href="">About us</a></li>
+                            <li><a href="">Services</a></li>
+                            <li><a href="">Events</a></li>
+                            <li><a href="">Features</a></li>
+                        </ul> -->
+                        <!-- <ul>
+                            <li><a href="">Policy</a></li>
+                            <li><a href="">Term</a></li>
+                            <li><a href="">Help</a></li>
+                            <li><a href="">FAQs</a></li>
+                            <li><a href="">Site map</a></li>
+                        </ul> -->
+                    </div>
+                </div>
+                <!-- widget -->
+                <!-- <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">RECENT POST</h6>
+                    <ul class="recent-post">
+                        <li>
+                            <p>Snackable study:How to break <br> up your master's degree</p>
+                            <span><i class="fa fa-clock-o"></i>24 Mar 2018</span>
+                        </li>
+                        <li>
+                            <p>Open University plans major <br> cuts to number of staff</p>
+                            <span><i class="fa fa-clock-o"></i>24 Mar 2018</span>
+                        </li>
+                    </ul>
+                </div> -->
+                <!-- widget -->
+                <div class="col-sm-6 col-lg-3 footer-widget">
+                    <h6 class="fw-title">CONTACT</h6>
+                    <ul class="contact">
+                        <li>
+                            <p><i class="fa fa-map-marker"></i> Sarai Nain Singh, Jewar, GB Nagar, 203135, UP</p>
+                        </li>
+                        <li>
+                            <p><i class="fa fa-phone"></i> (+05738) 273 788</p>
+                        </li>
+                        <li>
+                            <p><i class="fa fa-envelope"></i> school@gmail.com</p>
+                        </li>
+                        <li>
+                            <p><i class="fa fa-clock-o"></i> Monday - Friday, 09:00AM - 02:30 PM</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- copyright -->
+        <div class="copyright">
+            <div class="container">
+                <p>
+                    Copyright &copy; School
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer section end-->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+    <script src="{% static 'js/magnific-popup.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

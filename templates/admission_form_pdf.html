@@ -1,0 +1,106 @@
+{% block content %}
+<h1>({{DownloadAdmissionForm.sr_no}}) School - Admission Details</h1>
+<p style="text-align:right">Paste Photograph</p><br><br><br>
+<table class="table table-bordered" border="1"  cellpadding="8">
+    
+    <tbody>
+        <tr>
+            <th>SR No</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.sr_no}}</td>
+        </tr>
+        <tr>
+            <th>Student Name</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.name_of_student}}</td>
+        </tr>
+        <tr>
+            <th>Date of Registration</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.date_of_registration}}</td>
+        </tr>
+        <tr>
+            <th>Class</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.class_admission}}</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.date_of_birth}}</td>
+        </tr>
+        <tr>
+            <th>Religion</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.religion}}</td>
+        </tr>
+        <tr>
+            <th>Caste</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.caste}}</td>
+        </tr>
+        <tr>
+            <th>Nationality</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.nationality}}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.gender}}</td>
+        </tr>
+        <tr>
+            <th>Student Aadhar Number</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.aadhar_number}}</td>
+        </tr>
+        <tr>
+            <th>Father's Name</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.father_name}}</td>
+        </tr>
+        <tr>
+            <th>Father's Qualification</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.father_qualification}}</td>
+        </tr>
+        <tr>
+            <th>Father's Occupation</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.father_occupation}}</td>
+        </tr>
+        <tr>
+            <th>Father's Mobile Number</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.father_mobile}}</td>
+        </tr>
+        <tr>
+            <th>Father's Address</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.father_address}}</td>
+        </tr>
+        <tr>
+            <th>Mother's Name</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.mother_name}}</td>
+        </tr>
+        <tr>
+            <th>Mother's Qualification</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.mother_qualification}}</td>
+        </tr>
+        <tr>
+            <th>Mother's Occupation</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.mother_occupation}}</td>
+        </tr>
+        <tr>
+            <th>Mother's Mobile Number</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.mother_mobile}}</td>
+        </tr>
+        <tr>
+            <th>Mother's Address</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.mother_address}}</td>
+        </tr>
+        <tr>
+            <th>Last Attended Class</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.last_class}}</td>
+        </tr>
+        <tr>
+            <th>Admission done by</th>
+            <td style="text-align:center">{{DownloadAdmissionForm.form_filled_by}}</td>
+        </tr>
+        
+        
+        
+    </tbody>
+</table>
+
+<div><p style="text-align:left">Date:__/__/____ </p>
+    <br><br>
+    <p>Parent's Sign here</p>
+    <p style="text-align:right">Principal's Sign & School Seal here</p>
+</div>
+{% endblock content %}

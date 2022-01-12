@@ -1,0 +1,172 @@
+{% extends 'base.html' %} {% block title %} All Admissions {% endblock title %}
+{% block content %}
+<div class="">
+    <div class="alert alert-primary text-end" style="border: 0 !important; border-radius: 12px">
+        <h5 class="m-0 p-0">All Admissions</h5>
+    </div>
+    <div class="text-end">
+        <a href="/admission" class="btn btn-primary mb-3">
+            <i class="bx bx-plus-medical text-white" style="line-height: auto"></i>
+            Add new
+        </a>
+    </div>
+    {% if messages %}
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function(event) {
+            toastr.options = { "closeButton": true, "debug": false, "newestOnTop": true,
+                "progressBar": true, "positionClass": "toast-top-right", "preventDuplicates": true,
+                "onclick": null, "showDuration": "300", "hideDuration": "1000", "timeOut": "5000",
+                "extendedTimeOut": "1000", "showEasing": "swing", "hideEasing": "linear",
+                "showMethod": "fadeIn", "hideMethod": "fadeOut"};
+            {% autoescape off %}
+                {% for msg in messages %}
+                    toastr.{{ msg.level_tag }}("{{ msg }}");
+                {% endfor %}
+            {% endautoescape %}
+        });
+    </script>
+{% endif %}
+    <div class="card admission-card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered" id="alladmissionTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">Actions</th>
+                            <th scope="col">Download Certificates</th>
+                            <th scope="col">SR No</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Student Photo</th>
+                            <th scope="col">Date of Registration</th>
+                            <th scope="col">Class</th>
+                            <th scope="col">DOB</th>
+                            <th scope="col">Religion</th>
+                            <th scope="col">Caste</th>
+                            <th scope="col">Nationality</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Student Aadhar Card</th>
+
+                            <th scope="col">Last Attended School</th>
+                            <th scope="col">Session</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Place of Birth</th>
+                            <th scope="col">Disability</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Father's Photo</th>
+                            <th scope="col">Father's Name</th>
+                            <th scope="col">Father's Qualification</th>
+                            <th scope="col">Father's Occupation</th>
+                            <th scope="col">Father's Mobile</th>
+                            <th scope="col">Father's Address</th>
+                            <th scope="col">Father Aadhar Card</th>
+                            <th scope="col">Mother's Photo</th>
+                            <th scope="col">Mother's Name</th>
+                            <th scope="col">Mother's Qualification</th>
+                            <th scope="col">Mother's Occupation</th>
+                            <th scope="col">Mother's Mobile</th>
+                            <th scope="col">Mother's Address</th>
+                            <th scope="col">Mother Aadhar Card</th>
+                            <th scope="col">Medical Issue</th>
+                            <th scope="col">Last Attended Class</th>
+                            <th scope="col">Admission form filled by</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for st in stud %}
+                        <tr>
+                            <td class="text-center">
+                                <a href="{% url 'updatedata' st.id %}" class=""><i class="bx bx-edit-alt"
+                                        style="color: blue"></i></a>
+                                <form action="{% url 'deletedata' st.id %}" method="POST" class="d-inline">
+                                    {%csrf_token%}
+                                    <button type="submit" class="delete-btn"
+                                        onclick="return confirm('Are you sure you want to delete this student record?')">
+                                        <i class="bx bxs-basket"></i>
+                                    </button>
+                                </form>
+                                <a href="{% url 'download_admission_form_pdf' st.id %}"><i style="color:rgb(6, 179, 6)"
+                                        class='bx bxs-download'></i></a>
+                            </td>
+                            <td><a class="text-sm badge bg-primary" href="{% url 'character_pdf' st.id %}"
+                                    style="text-decoration: none;">Character</a>
+                                    <a class="text-sm badge bg-success" href="{% url 'idcard_pdf' st.id %}"
+                                    style="text-decoration: none;">ID</a>
+                                <a class="text-sm badge bg-danger" href="{% url 'dob_pdf' st.id %}"
+                                    style="text-decoration: none;">DOB</a>
+                                <a class="text-sm badge bg-warning" href="{% url 'transfer_pdf' st.id %}"
+                                    style="text-decoration: none;">Transfer</a>
+                            </td>
+                            <td scope="row">{{st.sr_no}}</td>
+                            <td>{{st.name_of_student}}</td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<img class='img-fluid' src='{{st.student_photo.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.student_photo.url}}" alt="" /></a>
+
+                            </td>
+                            <td>{{st.date_of_registration}}</td>
+                            <td>{{st.class_admission}}</td>
+                            <td>{{st.date_of_birth}}</td>
+                            <td>{{st.religion}}</td>
+                            <td>{{st.caste}}</td>
+                            <td>{{st.nationality}}</td>
+                            <td>{{st.gender}}</td>
+                            <td>{{st.aadhar_number}}</td>
+
+                            <td>{{st.last_attended_school}}</td>
+                            <td>{{st.session}}</td>
+                            <td>{{st.email}}</td>
+                            <td>{{st.birth_place}}</td>
+                            <td>{{st.disability}}</td>
+                            <td>{{st.category}}</td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<img class='img-fluid' src='{{st.father_photo.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.father_photo.url}}" alt="" /></a>
+
+                            </td>
+
+                            <td>{{st.father_name}}</td>
+                            <td>{{st.father_qualification}}</td>
+                            <td>{{st.father_occupation}}</td>
+                            <td>{{st.father_mobile}}</td>
+                            <td>{{st.father_address}}</td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.father_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.father_aadhar_back.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.father_aadhar_front.url}}"
+                                        alt="" /></a>
+
+                            </td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<img class='img-fluid' src='{{st.mother_photo.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.mother_photo.url}}" alt="" /></a>
+
+                            </td>
+                            <td>{{st.mother_name}}</td>
+                            <td>{{st.mother_qualification}}</td>
+                            <td>{{st.mother_occupation}}</td>
+                            <td>{{st.mother_mobile}}</td>
+                            <td>{{st.mother_address}}</td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.mother_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.mother_aadhar_back.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.mother_aadhar_front.url}}"
+                                        alt="" /></a>
+
+                            </td>
+                            <td>{{st.medical_issue}}</td>
+                            <td>{{st.last_class}}</td>
+                            <td>{{st.form_filled_by}}</td>
+                        </tr>
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

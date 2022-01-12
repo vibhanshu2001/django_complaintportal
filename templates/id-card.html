@@ -1,0 +1,27 @@
+{% block content %}
+<div>
+    <h1 style="font-size:30px; text-align:center;">ID CARD of {{IDCard.name_of_student}}</h1>
+    <table border="0.5" cellspacing="0" cellpadding="10">
+        <tbody>
+            <tr>
+                <td>
+                    <p style="text-align:center;"><span style="font-size:15px;font-weight:bold">Blue Bird Public School</span>
+                    <br>Sarai Nain Singh, Jewar (203135)
+                    </p>
+                    <b>Name</b> {{IDCard.name_of_student | title}} <img src="{{IDCard.student_photo.url}}" alt=""> <br>
+                    <b>Class</b> {{IDCard.class_admission | title}} <br>
+                    <b>Father's Name</b> {{IDCard.father_name | title}} <br>
+                    <b>Mother's Name</b> {{IDCard.mother_name | title}} <br>
+                    <b>Father's Mobile</b> {{IDCard.father_mobile | title}} <br>
+                </td>
+                <td colspan="2">
+                    <p style="text-align:center"> < Cut the id card and laminate</p>
+                </td>
+                
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>
+{% endblock content %}

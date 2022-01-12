@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.admission-card {
+  border-radius: 12px !important;
+  box-shadow: -5px -5px 27px #c9c9c9,
+      5px 5px 27px #ffffff;
+  border-width: 0 !important;
+}
+
+form .form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: none;
+}
+
+.btn-danger {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  color: #fff;
+  font-size: 15px;
+  background: #0d6efd;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border-width: 0 !important;
+}
+
+.btn-danger:hover {
+  background: #0e6aeb;
+  text-decoration: none;
+}
+
+.delete-btn {
+  border: 0 !important;
+  background-color: transparent !important;
+  color: red;
+}
+
+
+@media only screen and (min-width: 1400px){
+.container{
+  max-width:80vw !important;
+}
+}
+
+
+
+
+
+
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #0d6efd;
+  color: #fff;
+  transition: all 0.3s;
+  height: 100vh;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #0b61e1;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+#sidebar ul li a:hover {
+  color: #0d6efd;
+  background: #fff;
+}
+
+.popover{
+  width: 100% !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+}
+.text-sm{
+  font-size:12px !important;
+}
+a:hover{
+  color: #000 !important
+}
+
+.btn-outline-primary:hover{
+  color: #fff !important
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.alert-danger{
+  border-width: 0 !important;
+  border-radius: 0 !important;
+}
+.index-card{
+  border-radius: 12px !important;
+}
+.table th:nth-child(4),
+.table td:nth-child(4) {
+  position: sticky;
+  left: -0;
+  background-color: rgb(242, 242, 242);
+}

@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+{% block title %}
+New Admission
+{% endblock title %}
+{% block content %}
+<div class="pb-3">
+    <div class="alert alert-primary text-end" style="border: 0 !important;border-radius:12px">
+        <h5 class="m-0 p-0">Add New Admission</h5>
+    </div>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token%}
+        <div class="card admission-card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.name_of_student|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.student_photo|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.date_of_registration|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.sr_no|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.class_admission|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.date_of_birth|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.religion|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.caste|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.nationality|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.gender|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.last_class|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.aadhar_number|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.last_attended_school|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.session|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.email|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.birth_place|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.disability|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.category|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-0">
+                        {{ form.student_aadhar_front|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        {{ form.student_aadhar_back|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card admission-card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 mb-0">
+                        {{ form.father_photo|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.father_name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.father_qualification|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.father_occupation|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-0">
+                        {{ form.father_mobile|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        {{ form.father_address|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-0">
+                        {{ form.father_aadhar_front|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        {{ form.father_aadhar_back|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card admission-card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 mb-0">
+                        {{ form.mother_photo|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 mb-0">
+                        {{ form.mother_name|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.mother_qualification|as_crispy_field }}
+                    </div>
+                    <div class="col-md-4 mb-0">
+                        {{ form.mother_occupation|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-0">
+                        {{ form.mother_mobile|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        {{ form.mother_address|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-0">
+                        {{ form.mother_aadhar_front|as_crispy_field }}
+                    </div>
+                    <div class="col-md-6 mb-0">
+                        {{ form.mother_aadhar_back|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card admission-card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 mb-0">
+                        {{ form.medical_issue|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6 mb-0">
+                        {{ form.form_filled_by|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-end">
+            <input type="submit" class="btn btn-danger" value="Submit">
+        </div>
+    </form>
+
+</div>
+{% endblock content %}

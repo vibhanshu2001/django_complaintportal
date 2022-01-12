@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link href="{% static 'img/favicon.svg' %}" rel="shortcut icon" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.css" rel="stylesheet"/>
+  
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="site-logo "><img style="height: 4rem;background-color:white;border-radius:13px;" class="img-fluid p-1"
+                    src="{% static 'img/logo.svg' %}"
+                    alt=""></a>
+            </div>
+            {% if user.is_authenticated and user.is_superuser %}
+            <ul class="list-unstyled components">
+                {% if user.is_authenticated %}
+                <p>Logged in as <span class="px-2" style="background-color: white;color: #0d6efd;border-radius: 12px;">{{request.user.username}}</span></p>
+                {% endif %}
+                <li>
+                    <a href="/portal"><i class='bx bxs-home-circle'></i> Home</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/admission"><i class='bx bxs-user-rectangle'></i> New Admission</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/all-admissions"><i class='bx bxs-user-account'></i> All Students</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/filterclass"><i class='bx bx-customize'></i> Class Wise List</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/signup"><i class='bx bxs-add-to-queue'></i> Add New User</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/allassignments"><i class='bx bxs-file-doc'></i> All Assignments</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="/"><i class='bx bx-arrow-back'></i> Back to site</a>
+                </li>
+                {% if not user.is_authenticated %}
+                <li>
+                    <a href="/login"><i class='bx bx-log-in'></i> Login</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/logout"><i class='bx bx-log-out'></i> Logout</a>
+                </li>
+                {% endif %}
+            </ul>
+            {% endif %}
+            {% if user.is_authenticated and not user.is_superuser %}
+            <div class="card m-2">
+                <div class="card-body">
+                    <p class="text-dark">
+                        Not authorised - bad request🧐
+                    </p>
+                    <a href="/">Back to home</a>
+                </div>
+            </div>
+            {% endif %}
+            {% if not user.is_authenticated and not user.is_superuser %}
+            <div class="card m-2">
+                <div class="card-body">
+                    <p class="text-dark">
+                        Not authorised - bad request🧐
+                    </p>
+                    <a href="/">Back to home</a>
+                </div>
+            </div>
+            {% endif %}
+
+            
+        </nav>
+        {% if user.is_authenticated and user.is_superuser %}
+        <div id="content" class="container">
+            <nav class="navbar navbar-expand-lg ">
+                <button type="button" id="sidebarCollapse" class="btn btn-primary shadow-none">
+                    <span><i class='bx bx-menu' style="line-height:1.5"></i></span>
+                </button>
+            </nav>
+            {% block content %}{% endblock content %}
+        </div>
+        {% endif %}
+        
+        
+
+
+    </div>
+    <!-- <footer class="fixed-bottom">
+        <div class="alert alert-danger m-0 p-1">
+            &copy; School Portal 2022
+        </div>
+    </footer> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+</body>
+
+</html>
