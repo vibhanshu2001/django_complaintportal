@@ -123,7 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 STATIC_URL = '/static/'
