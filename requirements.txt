@@ -84,6 +84,7 @@ phonenumbers==8.12.15
 pickle-mixin==1.0.2
 Pillow==8.0.1
 pipenv==2020.11.15
+pipreqs==0.4.11
 prompt-toolkit==2.0.10
 protobuf==3.17.3
 psycopg2-binary==2.8.6
@@ -309,4 +310,5 @@ Werkzeug==2.0.1
 wikipedia==1.4.0
 wrapt==1.12.1
 yapf==0.31.0
+yarg==0.1.9
 yarl==1.6.3
