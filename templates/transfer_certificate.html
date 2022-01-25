@@ -1,8 +1,18 @@
 {% block content %}
 <div style="text-align: right;">
-    <h1 style="font-size:30px; text-align:center;">TRANSFER CERTIFICATE</h1>
-    <p style="font-size:15px;text-align:center">This is to certify that I know dd {{TransferCertificate.name_of_student}} s/o {{TransferCertificate.father_name}} & .... resident of ..... for the last .... years. ....... bears good moral character and to the best of my knowledge is not involved in any criminal activity is there. </p>
-    <img style="height: 100px;width: 120px;" src="https://previews.123rf.com/images/newdesignillustrations/newdesignillustrations1901/newdesignillustrations190103436/114576422-high-school-stamp-seal-watermark-with-distress-style-blue-vector-rubber-print-of-high-school-title-w.jpg" alt="">
-    <p><b>Principal's Signature</b></p>
+    <br>
+    School Affiliation No. 1054-56, GHS-18
+    <h2 style="font-size:20px; text-align:center;margin-bottom:0;">BLUE BIRD PUBLIC SCHOOL, JEWAR (G.B.NAGAR) U.P. </h2>
+    <h3 style="font-size:17px; text-align:center;">Scholar's Transfer Certificate</h3>
+    <p style="text-align: left;font-size:15px;">S.R.No. <b><u>{{TransferCertificate.sr_no}}</u></b><br>
+    1. Name of Student <b><u>{{TransferCertificate.name_of_student}}</u></b> Address <b><u>{{TransferCertificate.father_address}}</u></b> <br>
+    2. Name Of Father/Guardian <b><u>{{TransferCertificate.father_name}}</u></b> Occupation <b><u>{{TransferCertificate.father_occupation}}</u></b> <br>
+    3. Name Of Mother <b><u>{{TransferCertificate.mother_name}}</u></b> Occupation <b><u>{{TransferCertificate.mother_occupation}}</u></b> <br>
+    4. Nationality <b><u>{{TransferCertificate.nationality}}</u></b><br>
+    5. Caste/Religion <b><u>{{TransferCertificate.caste}} / {{TransferCertificate.religion}}</u></b> <br>
+    6. Date Of Birth According To Admission Register (In Figures) <b><u>{{TransferCertificate.date_of_birth| date:"d-f-Y"}} </u></b> (In Words) <b><u>{{TransferCertificate.date_of_birth| date:"d F Y"}}</u></b> <br>
+    </p>
+    
+    
 </div>
 {% endblock content %}

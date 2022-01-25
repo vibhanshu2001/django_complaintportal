@@ -1015,3 +1015,32 @@ ol {
     padding-left: 0;
   }
 }
+.rotate{
+  animation: rotate 1.5s linear infinite; 
+}
+@keyframes rotate{
+  from{ transform: scale(0); }
+  25%{ transform: scale(0.5); }
+  50%{ transform: scale(1); }
+  75%{ transform: scale(0.5); }
+  100%{ transform: scale(0); }
+}
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background-color: #020031;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#myBtn:hover {
+  background-color: #0e6aeb;
+}

@@ -24,7 +24,7 @@ SECRET_KEY = '@f%xiwu76=yhx9%nwl2&y&m@d(%mu+w&)f^c9t8b=@m8i_r@7^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['206.189.136.141','bbps.co.in','127.0.0.1:8000']
+ALLOWED_HOSTS = ['206.189.136.141','bbps.co.in','127.0.0.1']
 
 
 # Application definition
