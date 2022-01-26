@@ -176,6 +176,72 @@ Update Details
                 </div>
             </div>
         </div>
+        <div class="card admission-card mb-3" style="border: 2px solid blue !important;">
+            <div class="card-body">
+                <h3 class="mb-3">Only to be filled at the time of TC Issuance</h3>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.school_last_attended_with_result|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.subjects_studied|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.qualified_for_promotion|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.months_school_dues_paid|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.total_working_days|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.total_days_present|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.extra_curricular_activity|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.character_of_student|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.extra_curricular_activity|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.general_conduct|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 mb-0">
+                        {{ form.date_of_application_of_tc|as_crispy_field }}
+                    </div>
+                    <div class="col-6 mb-0">
+                        {{ form.date_of_issuance_tc|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-0">
+                        {{ form.reason_of_leaving|as_crispy_field }}
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12 mb-0">
+                        {{ form.tc_prepared_by|as_crispy_field }}
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
 
         <div class="text-end">
             <input type="submit" class="btn btn-danger" value="Submit">

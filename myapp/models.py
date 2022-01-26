@@ -98,6 +98,20 @@ class AdmissionUpload(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='---')
     father_photo = models.FileField(upload_to='images/')
     mother_photo = models.FileField(upload_to='images/')
+    # TC details
+    school_last_attended_with_result = models.CharField(max_length=100, blank=True, null=True)
+    subjects_studied = models.CharField(max_length=100, blank=True, null=True)
+    qualified_for_promotion = models.CharField(max_length=100, blank=True, null=True)
+    months_school_dues_paid = models.CharField(max_length=100, blank=True, null=True)
+    total_working_days = models.CharField(max_length=100, blank=True, null=True)
+    total_days_present = models.CharField(max_length=100, blank=True, null=True)
+    extra_curricular_activity = models.CharField(max_length=100, blank=True, null=True)
+    character_of_student = models.CharField(max_length=100, blank=True, null=True)
+    general_conduct = models.CharField(max_length=100, blank=True, null=True)
+    date_of_application_of_tc = models.CharField(max_length=100, blank=True, null=True)
+    reason_of_leaving = models.CharField(max_length=100, blank=True, null=True)
+    date_of_issuance_tc = models.CharField(max_length=100, blank=True, null=True)
+    tc_prepared_by = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name_of_student

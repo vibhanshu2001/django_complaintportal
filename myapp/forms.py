@@ -79,10 +79,26 @@ class AdmissionUploadForm(forms.ModelForm):
             'category': 'Category',
             'father_photo': 'Father\'s Photo',
             'mother_photo': 'Mother\'s Photo',
+            # tc
+            'school_last_attended_with_result': 'School Last Attended with result',
+            'subjects_studied': 'Subjects Studied',
+            'qualified_for_promotion': 'Qualified for promotion',
+            'months_school_dues_paid': 'Months upto which school dues paid',
+            'total_working_days': 'Total Working Days',
+            'total_days_present': 'Total Working Days Present',
+            'extra_curricular_activity': 'Extracurricular Activity if any',
+            'character_of_student': 'Character of Student',
+            'general_conduct': 'General Conduct',
+            'date_of_application_of_tc': 'Date of application of TC',
+            'reason_of_leaving': 'Reason of leaving school',
+            'date_of_issuance_tc': 'Date of Issuance of TC',
+            'tc_prepared_by': 'TC prepared by',
         }
         widgets = {
             'date_of_birth': DateInput(), 
             'date_of_registration': DateInput(),
             'form_filled_by': forms.HiddenInput(),
+            'date_of_application_of_tc':DateInput(),
+            'date_of_issuance_tc': DateInput(),
         }
     

@@ -1,18 +1,117 @@
+
 {% block content %}
 <div style="text-align: right;">
     <br>
     School Affiliation No. 1054-56, GHS-18
     <h2 style="font-size:20px; text-align:center;margin-bottom:0;">BLUE BIRD PUBLIC SCHOOL, JEWAR (G.B.NAGAR) U.P. </h2>
     <h3 style="font-size:17px; text-align:center;">Scholar's Transfer Certificate</h3>
-    <p style="text-align: left;font-size:15px;">S.R.No. <b><u>{{TransferCertificate.sr_no}}</u></b><br>
-    1. Name of Student <b><u>{{TransferCertificate.name_of_student}}</u></b> Address <b><u>{{TransferCertificate.father_address}}</u></b> <br>
-    2. Name Of Father/Guardian <b><u>{{TransferCertificate.father_name}}</u></b> Occupation <b><u>{{TransferCertificate.father_occupation}}</u></b> <br>
-    3. Name Of Mother <b><u>{{TransferCertificate.mother_name}}</u></b> Occupation <b><u>{{TransferCertificate.mother_occupation}}</u></b> <br>
-    4. Nationality <b><u>{{TransferCertificate.nationality}}</u></b><br>
-    5. Caste/Religion <b><u>{{TransferCertificate.caste}} / {{TransferCertificate.religion}}</u></b> <br>
-    6. Date Of Birth According To Admission Register (In Figures) <b><u>{{TransferCertificate.date_of_birth| date:"d-f-Y"}} </u></b> (In Words) <b><u>{{TransferCertificate.date_of_birth| date:"d F Y"}}</u></b> <br>
-    </p>
+    <p style="text-align: left;font-size:15px;">S.R.No. <b>{{TransferCertificate.sr_no}}</b></p>
+    <p style="text-align: left;font-size:15px;">Student Aadhar No. <b>{{TransferCertificate.aadhar_number}}</b></p>
+    
     
     
 </div>
+<table style="text-align:left">
+    <tr>
+        <td style="font-size:17px;">Name of Student</td>
+        <td style="font-size:17px;font-weight: bold;">{{TransferCertificate.name_of_student}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Date Of Birth According To Register </td>
+        <td style="font-size:15px;">(In Figures) <b>{{TransferCertificate.date_of_birth| date:"d-f-Y"}}</b> (In Words) <b>{{TransferCertificate.date_of_birth| date:"d F Y"}}</b></td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Name Of Father/Guardian</td>
+        <td style="font-size:17px;">{{TransferCertificate.father_name}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Occupation Of Father</td>
+        <td style="font-size:17px;">{{TransferCertificate.father_occupation}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Name Of Mother</td>
+        <td style="font-size:17px;">{{TransferCertificate.mother_name}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Occupation Of Mother</td>
+        <td style="font-size:17px;">{{TransferCertificate.mother_occupation}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Address</td>
+        <td style="font-size:17px;">{{TransferCertificate.father_address}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Nationality</td>
+        <td style="font-size:17px;">{{TransferCertificate.nationality}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Caste/Religion</td>
+        <td style="font-size:17px;">{{TransferCertificate.caste}} / {{TransferCertificate.religion}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Date of Registration</td>
+        <td style="font-size:17px;">{{TransferCertificate.date_of_registration| date:"d-f-Y"}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Class in which pupil last studied</td>
+        <td style="font-size:17px;">{{TransferCertificate.class_admission}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">School Last attended With Result</td>
+        <td style="font-size:17px;">{{TransferCertificate.school_last_attended_with_result}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Subjects Studied</td>
+        <td style="font-size:17px;">{{TransferCertificate.subjects_studied}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Qualified for promotion?</td>
+        <td style="font-size:17px;">{{TransferCertificate.qualified_for_promotion}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Months upto which school dues paid</td>
+        <td style="font-size:17px;">{{TransferCertificate.months_school_dues_paid}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Total Number of Working Days</td>
+        <td style="font-size:17px;">{{TransferCertificate.total_working_days}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Total Number of Working Days Present</td>
+        <td style="font-size:17px;">{{TransferCertificate.total_days_present}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Extra Curricular Activities if any</td>
+        <td style="font-size:17px;">{{TransferCertificate.extra_curricular_activity}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Character</td>
+        <td style="font-size:17px;">{{TransferCertificate.character_of_student}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">General Conduct</td>
+        <td style="font-size:17px;">{{TransferCertificate.general_conduct}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">All Sums due to this school on his/hers account have been paid, remitted or satisfactorily arranged for.</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Date of Application for Tranfer Certificate</td>
+        <td style="font-size:17px;">{{TransferCertificate.date_of_application_of_tc}}</td>
+    </tr>
+    <tr>
+        <td style="font-size:17px;">Reason for Leaving the school</td>
+        <td style="font-size:17px;">{{TransferCertificate.reason_of_leaving}}</td>
+    </tr>
+
+</table>
+<p style="text-align: center;font-size:17px;"><i>It is certified that above information is filled up by the scholar's register.</i></p>
+<br><br><br><br>
+<table>
+    <td style="font-size:15px">Dated: <b>{{TransferCertificate.date_of_issuance_tc}}</b></td>
+    <td style="font-size:15px"> Prepared by: <b>{{TransferCertificate.tc_prepared_by}}</b></td>
+    <td style="font-size:15px">School Seal & Principal's Sign</td>
+</table>
+
+
 {% endblock content %}
