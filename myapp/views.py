@@ -31,19 +31,7 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 # ssl end
-# @login_required(login_url='handleLogin')
-# def CharacterCertificate_PDF(request, id) :
-#     CharacterCertificate = get_object_or_404(AdmissionUpload, pk=id)
-#     data = {'CharacterCertificate': CharacterCertificate}
-#     template = get_template('character.html')
-#     html  = template.render(data)
-#     file = open('test.pdf', "w+b")
-#     pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-#             encoding='utf-8')
-#     file.seek(0)
-#     pdf = file.read()
-#     file.close()
-#     return HttpResponse(pdf, 'application/pdf')
+
 @login_required(login_url='handleLogin')
 def CharacterCertificate_PDF(request, id) :
     CharacterCertificate = get_object_or_404(AdmissionUpload, pk=id)
@@ -51,7 +39,7 @@ def CharacterCertificate_PDF(request, id) :
     template = get_template('character.html')
     html  = template.render(data)
     result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
@@ -63,7 +51,7 @@ def DOBCertificate_PDF(request, id) :
     template = get_template('dob_certificate.html')
     html  = template.render(data)
     result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
@@ -74,7 +62,7 @@ def IDCard_PDF(request, id) :
     template = get_template('id-card.html')
     html  = template.render(data)
     result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
@@ -85,7 +73,7 @@ def TransferCertificate_PDF(request, id) :
     template = get_template('transfer_certificate.html')
     html  = template.render(data)
     result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
@@ -96,7 +84,7 @@ def Download_Admission_Form_PDF(request, id) :
     template = get_template('admission_form_pdf.html')
     html  = template.render(data)
     result = BytesIO()
-    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), result)
     if not pdf.err:
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
