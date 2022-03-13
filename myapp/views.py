@@ -18,6 +18,8 @@ from django.template.loader import get_template
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
+from io import StringIO
+from io import BytesIO
 
 # ssl start
 import ssl 
@@ -29,71 +31,75 @@ except AttributeError:
 else:
     ssl._create_default_https_context = _create_unverified_https_context
 # ssl end
+# @login_required(login_url='handleLogin')
+# def CharacterCertificate_PDF(request, id) :
+#     CharacterCertificate = get_object_or_404(AdmissionUpload, pk=id)
+#     data = {'CharacterCertificate': CharacterCertificate}
+#     template = get_template('character.html')
+#     html  = template.render(data)
+#     file = open('test.pdf', "w+b")
+#     pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
+#             encoding='utf-8')
+#     file.seek(0)
+#     pdf = file.read()
+#     file.close()
+#     return HttpResponse(pdf, 'application/pdf')
 @login_required(login_url='handleLogin')
 def CharacterCertificate_PDF(request, id) :
     CharacterCertificate = get_object_or_404(AdmissionUpload, pk=id)
     data = {'CharacterCertificate': CharacterCertificate}
     template = get_template('character.html')
     html  = template.render(data)
-    file = open('test.pdf', "w+b")
-    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-            encoding='utf-8')
-    file.seek(0)
-    pdf = file.read()
-    file.close()
-    return HttpResponse(pdf, 'application/pdf')
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
+
 @login_required(login_url='handleLogin')
 def DOBCertificate_PDF(request, id) :
     DOBCertificate = get_object_or_404(AdmissionUpload, pk=id)
     data = {'DOBCertificate': DOBCertificate}
     template = get_template('dob_certificate.html')
     html  = template.render(data)
-    file = open('test.pdf', "w+b")
-    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-            encoding='utf-8')
-    file.seek(0)
-    pdf = file.read()
-    file.close()
-    return HttpResponse(pdf, 'application/pdf')
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 @login_required(login_url='handleLogin')
 def IDCard_PDF(request, id) :
     IDCard = get_object_or_404(AdmissionUpload, pk=id)
     data = {'IDCard': IDCard}
     template = get_template('id-card.html')
     html  = template.render(data)
-    file = open('test.pdf', "w+b")
-    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-            encoding='utf-8')
-    file.seek(0)
-    pdf = file.read()
-    file.close()
-    return HttpResponse(pdf, 'application/pdf')
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 @login_required(login_url='handleLogin')
 def TransferCertificate_PDF(request, id) :
     TransferCertificate = get_object_or_404(AdmissionUpload, pk=id)
     data = {'TransferCertificate': TransferCertificate}
     template = get_template('transfer_certificate.html')
     html  = template.render(data)
-    file = open('test.pdf', "w+b")
-    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-            encoding='utf-8')
-    file.seek(0)
-    pdf = file.read()
-    file.close()
-    return HttpResponse(pdf, 'application/pdf')
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 @login_required(login_url='handleLogin')
 def Download_Admission_Form_PDF(request, id) :
     DownloadAdmissionForm = get_object_or_404(AdmissionUpload, pk=id)
     data = {'DownloadAdmissionForm': DownloadAdmissionForm}
     template = get_template('admission_form_pdf.html')
     html  = template.render(data)
-    file = open('test.pdf', "w+b")
-    pisaStatus = pisa.CreatePDF(html.encode('utf-8'), dest=file,
-            encoding='utf-8')
-    file.seek(0)
-    pdf = file.read()
-    file.close()
-    return HttpResponse(pdf, 'application/pdf')
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 def main(request):
     return render(request, 'main.html')
 @login_required(login_url='handleLogin')
@@ -144,19 +150,6 @@ def handleLogout(request):
     logout(request)
     messages.info(request, "Logged out successfully")
     return redirect('handleLogin')
-# def signUp(request):
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('index')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'signup.html', {'form': form})
 
 def signUp(request):
     if request.method == 'POST':
