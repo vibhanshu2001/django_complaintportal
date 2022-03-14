@@ -98,6 +98,8 @@ class AdmissionUpload(models.Model):
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='---')
     father_photo = models.FileField(upload_to='images/')
     mother_photo = models.FileField(upload_to='images/')
+    # to be filled by uploading pdf
+    sealed_admission_doc = models.FileField(upload_to='admissionforms/', blank=True, null=True)
     # TC details
     school_last_attended_with_result = models.CharField(max_length=100, blank=True, null=True)
     subjects_studied = models.CharField(max_length=100, blank=True, null=True)
@@ -124,4 +126,15 @@ class AssignmentUpload(models.Model):
     uploaded_by = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.assignment_name
+class GalleryUpload(models.Model):
+    gallery_file = models.FileField(upload_to='gallery/')
+    uploaded_by = models.CharField(max_length=100, blank=True, null=True)
+    def __str__(self):
+        return self.uploaded_by
+class NoticeUpload(models.Model):
+    notice_desc = models.CharField(max_length=500, blank=True, null=True)
+    date_of_posting = models.DateTimeField()
+    uploaded_by = models.CharField(max_length=100, blank=True, null=True)
+    def __str__(self):
+        return self.notice_desc
         

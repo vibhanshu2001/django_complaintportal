@@ -18,7 +18,7 @@
     </tr>
     <tr>
         <td style="font-size:17px;">Date Of Birth According To Register </td>
-        <td style="font-size:15px;">(In Figures) <b>{{TransferCertificate.date_of_birth| date:"d-f-Y"}}</b> (In Words) <b>{{TransferCertificate.date_of_birth| date:"d F Y"}}</b></td>
+        <td style="font-size:15px;">(In Figures) <b>{{TransferCertificate.date_of_birth| date:"d"}}-{{month_dob}}-{{TransferCertificate.date_of_birth| date:"Y"}}</b> (In Words) <b>{{date_dob | title}} {{TransferCertificate.date_of_birth| date:"F"}} {{year_dob | title}}</b></td>
     </tr>
     <tr>
         <td style="font-size:17px;">Name Of Father/Guardian</td>

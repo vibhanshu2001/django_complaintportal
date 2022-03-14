@@ -80,8 +80,9 @@
             </div>
             <ul class="main-menu">
                 <li class=""><a href="/">Home</a></li>
-                <li><a href="/">About</a></li>
-                <li><a href="/">Contact</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="/gallery">Gallery</a></li>
             </ul>
         </div>
     </nav>
@@ -268,9 +269,19 @@
     </section> -->
     <!-- Counter section end -->
 
-    
+    <section class="container-fluid">
+        <marquee behavior="" direction="">
+            <div style="display: flex;">
+                {% for i in notice %}
+            <div class="alert alert-primary mx-2 mt-2" style="border:0 !important;">
+                {{i.notice_desc}}
+            </div>
+            {% endfor %}
+            </div>
+        </marquee>
+    </section>
     <!-- Services section -->
-    <section class="service-section spad">
+    <section class="service-section spad" id="about" style="padding-top:20px !important">
         <div class="container services">
             <div class="section-title text-center">
                 <h3>ABOUT US</h3>
@@ -542,7 +553,7 @@ the community and to the nation as a whole.
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="shadow-lg"><i class="fa fa-arrow-up"></i></button>
 
     <!-- Footer section -->
-    <footer class="footer-section">
+    <footer class="footer-section" id="contact">
         <div class="container footer-top">
             <div class="row">
                 <!-- widget -->

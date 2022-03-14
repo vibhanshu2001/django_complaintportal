@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import AdmissionUpload, AssignmentUpload
+from .models import AdmissionUpload, AssignmentUpload, GalleryUpload, NoticeUpload
 from bootstrap_datepicker_plus.widgets import DateTimePickerInput
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Row, Column
@@ -32,6 +32,28 @@ class AssignmentUploadForm(forms.ModelForm):
             'date_of_posting': 'Date',
             'assignment_subject': 'Subject',
             'assignment_class': 'Assignment related to which class'
+        }
+        widgets = {
+            'uploaded_by': forms.HiddenInput(),
+            'date_of_posting': DateInput(), 
+        }
+class GalleryUploadForm(forms.ModelForm):
+    class Meta:
+        model = GalleryUpload
+        fields = '__all__'
+        labels = {
+            'gallery_file': 'Choose Gallery File',
+        }
+        widgets = {
+            'uploaded_by': forms.HiddenInput(),
+        }
+class NoticeUploadForm(forms.ModelForm):
+    class Meta:
+        model = NoticeUpload
+        fields = '__all__'
+        labels = {
+            'notice_desc': 'Notice',
+            'date_of_posting': 'Date of Notice',
         }
         widgets = {
             'uploaded_by': forms.HiddenInput(),
@@ -79,6 +101,8 @@ class AdmissionUploadForm(forms.ModelForm):
             'category': 'Category',
             'father_photo': 'Father\'s Photo',
             'mother_photo': 'Mother\'s Photo',
+            # admission form
+            'sealed_admission_doc': 'Upload the sealed admission form',
             # tc
             'school_last_attended_with_result': 'School Last Attended with result',
             'subjects_studied': 'Subjects Studied',

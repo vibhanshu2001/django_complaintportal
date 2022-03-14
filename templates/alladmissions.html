@@ -45,6 +45,7 @@
                             <th scope="col">Nationality</th>
                             <th scope="col">Gender</th>
                             <th scope="col">Student Aadhar Card</th>
+                            <th scope="col">Student Aadhar Photo</th>
 
                             <th scope="col">Last Attended School</th>
                             <th scope="col">Session</th>
@@ -98,7 +99,7 @@
                                         <i class="bx bxs-basket"></i>
                                     </button>
                                 </form>
-                                <a href="{% url 'download_admission_form_pdf' st.id %}"><i style="color:rgb(6, 179, 6)"
+                                <a download href="{% url 'download_admission_form_pdf' st.id %}"><i style="color:rgb(6, 179, 6)"
                                         class='bx bxs-download'></i></a>
                             </td>
                             <td><a class="text-sm badge bg-primary" href="{% url 'character_pdf' st.id %}"
@@ -109,6 +110,8 @@
                                     style="text-decoration: none;">DOB</a>
                                 <a class="text-sm badge bg-warning" href="{% url 'transfer_pdf' st.id %}"
                                     style="text-decoration: none;">Transfer</a>
+                                    <a class="text-sm badge bg-secondary" href="{{st.sealed_admission_doc.url}}"
+                                    style="text-decoration: none;">Admission Form</a>
                             </td>
                             <td scope="row">{{st.sr_no}}</td>
                             <td>{{st.name_of_student}}</td>
@@ -126,7 +129,13 @@
                             <td>{{st.nationality}}</td>
                             <td>{{st.gender}}</td>
                             <td>{{st.aadhar_number}}</td>
+                            <td class="text-center">
+                                <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
+                                    data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.student_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.student_aadhar_back.url}}'>"><img
+                                        style="height: 20px; width: 20px" src="{{st.student_aadhar_front.url}}"
+                                        alt="" /></a>
 
+                            </td>
                             <td>{{st.last_attended_school}}</td>
                             <td>{{st.session}}</td>
                             <td>{{st.email}}</td>

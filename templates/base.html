@@ -58,6 +58,21 @@
                     <a href="/allassignments"><i class='bx bxs-file-doc'></i> All Assignments</a>
                 </li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/uploadgallery"><i class='bx bxs-photo-album'></i> Add Gallery</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/updategallery"><i class='bx bxs-edit-alt'></i> Update Gallery</a>
+                </li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/uploadnotice"><i class='bx bxs-news'></i> Post Notice</a>
+                </li>
+                {% endif %}
                 <li>
                     <a href="/"><i class='bx bx-arrow-back'></i> Back to site</a>
                 </li>

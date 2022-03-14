@@ -9,8 +9,8 @@ from django.views.generic import View
 from django.core.files.storage import FileSystemStorage
 from django.utils.decorators import method_decorator
 from django.contrib.auth.forms import UserCreationForm
-from .models import AdmissionUpload, AssignmentUpload
-from .forms import AdmissionUploadForm, SignUpForm, AssignmentUploadForm
+from .models import AdmissionUpload, AssignmentUpload, GalleryUpload, NoticeUpload
+from .forms import AdmissionUploadForm, SignUpForm, AssignmentUploadForm, GalleryUploadForm, NoticeUploadForm
 from io import BytesIO
 from django.http import HttpResponse
 from xhtml2pdf import pisa
@@ -20,6 +20,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib import messages
 from io import StringIO
 from io import BytesIO
+from num2words import num2words
 
 # ssl start
 import ssl 
@@ -69,7 +70,10 @@ def IDCard_PDF(request, id) :
 @login_required(login_url='handleLogin')
 def TransferCertificate_PDF(request, id) :
     TransferCertificate = get_object_or_404(AdmissionUpload, pk=id)
-    data = {'TransferCertificate': TransferCertificate}
+    year_dob = num2words(TransferCertificate.date_of_birth.strftime('%Y'))
+    month_dob = TransferCertificate.date_of_birth.strftime('%m')
+    date_dob = num2words(TransferCertificate.date_of_birth.strftime('%d'))
+    data = {'TransferCertificate': TransferCertificate,'year_dob':year_dob,'date_dob':date_dob,'month_dob':month_dob}
     template = get_template('transfer_certificate.html')
     html  = template.render(data)
     result = BytesIO()
@@ -89,11 +93,20 @@ def Download_Admission_Form_PDF(request, id) :
         return HttpResponse(result.getvalue(), content_type='application/pdf')
     return HttpResponse('We had some errors<pre>%s</pre>' % escape(html))
 def main(request):
-    return render(request, 'main.html')
+    notice = NoticeUpload.objects.all()
+    return render(request, 'main.html',{'notice':notice})
 @login_required(login_url='handleLogin')
 def allassignments(request):
     assignment = AssignmentUpload.objects.all()
     return render(request, 'allassignments.html',{'assignment': assignment})
+@login_required(login_url='handleLogin')
+def updategallery(request):
+    gallery = GalleryUpload.objects.all()
+    return render(request, 'updategallery.html',{'gallery': gallery})
+
+def gallery(request):
+    gallery = GalleryUpload.objects.all()
+    return render(request, 'gallery.html',{'gallery': gallery})
 @login_required(login_url='handleLogin')
 def uploadassignment(request):
     assignment = AssignmentUpload.objects.all()
@@ -107,11 +120,36 @@ def uploadassignment(request):
             return redirect('/assignments')
     form = AssignmentUploadForm()
     return render(request, 'uploadassignment.html',{'form': form,'assignment': assignment})
+@login_required(login_url='handleLogin')
+def uploadgallery(request):
+    gallery = GalleryUpload.objects.all()
+    if request.method == 'POST':
+        form = GalleryUploadForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_record = form.save(commit=False)
+            new_record.uploaded_by = request.user.username
+            new_record.save()
+            messages.success(request, "Image Uploaded Successfully")
+            return redirect('/updategallery')
+    form = GalleryUploadForm()
+    return render(request, 'upload_gallery.html',{'form': form})
+@login_required(login_url='handleLogin')
+def uploadnotice(request):
+    if request.method == 'POST':
+        form = NoticeUploadForm(request.POST,request.FILES)
+        if form.is_valid():
+            new_record = form.save(commit=False)
+            new_record.uploaded_by = request.user.username
+            new_record.save()
+            return redirect('/')
+    form = NoticeUploadForm()
+    return render(request, 'upload_notice.html',{'form': form})
 def index(request):
     pi = AdmissionUpload.objects.count()
     ass = AssignmentUpload.objects.count()
     us = User.objects.count()
     users = User.objects.all()
+    
     return render(request, 'index.html',{'pi':pi,'us':us,'users':users,'ass':ass})
 @login_required(login_url='handleLogin')
 def character(request,id):
@@ -209,4 +247,11 @@ def delete_data(request,id):
         pi.delete()
         messages.error(request, "Data Deleted successfully")
         return redirect('/all-admissions')
+@login_required(login_url='handleLogin')
+def delete_gallery(request,id):
+    if request.method == 'POST':
+        pi = GalleryUpload.objects.get(pk=id)
+        pi.delete()
+        messages.error(request, "Photo Deleted successfully")
+        return redirect('/updategallery')
 
