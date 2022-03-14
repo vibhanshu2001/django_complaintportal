@@ -26,6 +26,7 @@ urlpatterns = [
     path('id/<int:id>',views.IDCard_PDF, name='idcard_pdf'),
     path('transfer_pdf/<int:id>',views.TransferCertificate_PDF, name='transfer_pdf'),
     path('download_admission_form_pdf/<int:id>',views.Download_Admission_Form_PDF, name='download_admission_form_pdf'),
+    
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
