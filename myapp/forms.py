@@ -52,7 +52,8 @@ class NoticeUploadForm(forms.ModelForm):
         model = NoticeUpload
         fields = '__all__'
         labels = {
-            'notice_desc': 'Notice',
+            'notice_desc': 'Notice Description',
+            'notice_file': 'Upload Notice File (pdf or image)',
             'date_of_posting': 'Date of Notice',
         }
         widgets = {

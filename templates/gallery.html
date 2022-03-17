@@ -7,8 +7,15 @@
 <head>
     <title>Gallery | Blue Bird Public School</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Unica University Template">
-    <meta name="keywords" content="event, unica, creative, html">
+    <meta name="title" content="Blue Bird Public School">
+<meta name="description" content="Among private alternative schools in Jewar, BBPS is exceptional. It is located in the heart of Jewar.">
+<meta name="keywords" content="bbps, bbps jewar, blue bird public school, blue bird public school jewar, blue bird jewar, naveen kumar garg, jewar, jewar airport">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="revisit-after" content="10 days">
+<meta name="author" content="Vibhanshu Garg">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link href="{% static 'img/favicon.svg' %}" rel="shortcut icon" />
@@ -92,17 +99,21 @@
     <!-- Header section end -->
     <!-- Hero section -->
     <section class="container py-5">
-        <h3><span class="badge bg-primary text-white">Gallery</span></h3>
+        <div class="section-title text-center">
+            <h3>GALLERY</h3>
         
-        
-
-        
+        </div>
         <div class="row mt-3">
             {% for i in gallery %}
             <div class="col-md-4 col-lg-4 col-6 mt-4">
                 <div class="card shadow" style="border-radius:10px;overflow:hidden;border: 0 !important;">
-                    <div class="card-body p-0">
-                        <img style="height:15rem;width:100%" class="img-fluid" src="{{i.gallery_file.url}}" alt="">
+                    <div class="card-body p-0" style="height:15rem;">
+                        <div class="gallery-item gi-big set-bg" data-setbg="{{i.gallery_file.url}}" style="height:15rem;background-size:cover;">
+                            <a class="img-popup" href="{{i.gallery_file.url}}" style="height:15rem;display:flex;justify-content:center;align-items:center">
+                                <i class="ti-eye text-white" style="font-size:2rem"></i>
+                            </a>
+                        </div>
+                        {% comment %} <img style="height:15rem;width:100%" class="img-fluid" src="{{i.gallery_file.url}}" alt=""> {% endcomment %}
                     </div>
                 </div>
             </div>

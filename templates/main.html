@@ -5,8 +5,15 @@
 <head>
     <title>Blue Bird Public School, Jewar</title>
     <meta charset="UTF-8">
-    <meta name="description" content="Unica University Template">
-    <meta name="keywords" content="event, unica, creative, html">
+    <meta name="title" content="Blue Bird Public School">
+<meta name="description" content="Among private alternative schools in Jewar, BBPS is exceptional. It is located in the heart of Jewar.">
+<meta name="keywords" content="bbps, bbps jewar, blue bird public school, blue bird public school jewar, blue bird jewar, naveen kumar garg, jewar, jewar airport">
+<meta name="robots" content="index, follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="revisit-after" content="10 days">
+<meta name="author" content="Vibhanshu Garg">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link href="{% static 'img/favicon.svg' %}" rel="shortcut icon" />
@@ -270,11 +277,14 @@
     <!-- Counter section end -->
 
     <section class="container-fluid">
-        <marquee behavior="" direction="">
+        <marquee behavior="" direction="" onmouseover="this.stop();" onmouseout="this.start();">
             <div style="display: flex;">
                 {% for i in notice %}
             <div class="alert alert-primary mx-2 mt-2" style="border:0 !important;">
-                {{i.notice_desc}}
+                {{i.notice_desc}} <a href="{{i.notice_file.url}}" >more...</a>
+                <div class="text-end" style="font-size:0.5rem;text-align: end;">
+                    {{i.date_of_posting | date:"d M, Y"}}
+                </div>
             </div>
             {% endfor %}
             </div>

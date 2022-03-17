@@ -133,6 +133,7 @@ class GalleryUpload(models.Model):
         return self.uploaded_by
 class NoticeUpload(models.Model):
     notice_desc = models.CharField(max_length=500, blank=True, null=True)
+    notice_file = models.FileField(upload_to='notices/')
     date_of_posting = models.DateTimeField()
     uploaded_by = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):

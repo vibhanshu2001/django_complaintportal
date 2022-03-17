@@ -9,7 +9,7 @@ class AssignmentUploadAdmin(admin.ModelAdmin):
 class GalleryUploadAdmin(admin.ModelAdmin):
     list_display = ('gallery_file','uploaded_by')
 class NoticeUploadAdmin(admin.ModelAdmin):
-    list_display = ('notice_desc','date_of_posting','uploaded_by')
+    list_display = ('notice_desc','notice_file','date_of_posting','uploaded_by')
 
 admin.site.register(AdmissionUpload,AdmissionUploadAdmin)
 admin.site.register(AssignmentUpload,AssignmentUploadAdmin)
