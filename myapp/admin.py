@@ -15,3 +15,6 @@ admin.site.register(AdmissionUpload,AdmissionUploadAdmin)
 admin.site.register(AssignmentUpload,AssignmentUploadAdmin)
 admin.site.register(GalleryUpload,GalleryUploadAdmin)
 admin.site.register(NoticeUpload,NoticeUploadAdmin)
+admin.site.site_header = "Blue Bird Public School"
+admin.site.site_title = "Major Admin Panel"
+admin.site.index_title = "Welcome Admin to BBPS Portal"
