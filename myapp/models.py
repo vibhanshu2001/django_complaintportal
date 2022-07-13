@@ -55,12 +55,26 @@ RELIGION_CHOICES = (
     ('sikhism','SIKHISM'),
     ('jainism','JAINISM'),
 )
+OCCUPATION_CHOICES = (
+    ('---','---'),
+    ('business', 'BUSINESS'),
+    ('service','SERVICE'),
+    ('farming','FARMING'),
+    ('labour','LABOUR'),
+    ('others','OTHERS'),
+)
+OCCUPATION_MOTHER_CHOICES = (
+    ('---','---'),
+    ('housewife', 'HOUSEWIFE'),
+    ('service','SERVICE'),
+    ('others','OTHERS'),
+)
 year_dropdown = []
 for y in range(2008, (datetime.datetime.now().year+1)):
     year_dropdown.append((y, y))
 # Create your models here.
 class AdmissionUpload(models.Model):
-    student_photo = models.FileField(upload_to='images/')
+    student_photo = models.FileField(upload_to='images/', blank=True, null=True)
     name_of_student = models.CharField(max_length=50, blank=True, null=True)
     date_of_registration = models.DateTimeField()
     sr_no = models.CharField(max_length=50, blank=True, null=True)
@@ -68,25 +82,25 @@ class AdmissionUpload(models.Model):
     date_of_birth = models.DateTimeField()
     religion = models.CharField(max_length=20, choices=RELIGION_CHOICES, default='---')
     caste = models.CharField(max_length=50, blank=True, null=True)
-    nationality = models.CharField(max_length=50, blank=True, null=True)
+    nationality = models.CharField(max_length=50, blank=True, null=True, default="INDIAN")
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default='---')
     aadhar_number = models.CharField(max_length=12, blank=True, null=True)
-    student_aadhar_front = models.FileField(upload_to='images/')
-    student_aadhar_back = models.FileField(upload_to='images/')
+    student_aadhar_front = models.FileField(upload_to='images/', blank=True, null=True)
+    student_aadhar_back = models.FileField(upload_to='images/', blank=True, null=True)
     father_name = models.CharField(max_length=50, blank=True, null=True)
     father_qualification = models.CharField(max_length=50, blank=True, null=True)
-    father_occupation = models.CharField(max_length=50, blank=True, null=True)
+    father_occupation = models.CharField(max_length=20, choices=OCCUPATION_CHOICES, default='---')
     father_mobile = models.CharField(max_length=50, blank=True, null=True)
     father_address = models.CharField(max_length=50, blank=True, null=True)
-    father_aadhar_front = models.FileField(upload_to='images/')
-    father_aadhar_back = models.FileField(upload_to='images/')
+    father_aadhar_front = models.FileField(upload_to='images/', blank=True, null=True)
+    father_aadhar_back = models.FileField(upload_to='images/', blank=True, null=True)
     mother_name = models.CharField(max_length=50, blank=True, null=True)
     mother_qualification = models.CharField(max_length=50, blank=True, null=True)
     mother_occupation = models.CharField(max_length=50, blank=True, null=True)
     mother_mobile = models.CharField(max_length=50, blank=True, null=True)
     mother_address = models.CharField(max_length=50, blank=True, null=True)
-    mother_aadhar_front = models.FileField(upload_to='images/')
-    mother_aadhar_back = models.FileField(upload_to='images/')
+    mother_aadhar_front = models.FileField(upload_to='images/', blank=True, null=True)
+    mother_aadhar_back = models.FileField(upload_to='images/', blank=True, null=True)
     medical_issue = models.CharField(max_length=100, blank=True, null=True)
     last_class = models.CharField(max_length=20, choices=CLASS_CHOICES, default='---')
     form_filled_by = models.CharField(max_length=100, blank=True, null=True)
@@ -96,8 +110,9 @@ class AdmissionUpload(models.Model):
     birth_place = models.CharField(max_length=100, blank=True, null=True)
     disability = models.CharField(max_length=20, choices=DISABILITY_CHOICES, default='---')
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='---')
-    father_photo = models.FileField(upload_to='images/')
-    mother_photo = models.FileField(upload_to='images/')
+    father_photo = models.FileField(upload_to='images/', blank=True, null=True)
+    mother_photo = models.FileField(upload_to='images/', blank=True, null=True)
+    any_sibling = models.CharField(max_length=100, blank=True, null=True, default="No")
     # to be filled by uploading pdf
     sealed_admission_doc = models.FileField(upload_to='admissionforms/', blank=True, null=True)
     # TC details

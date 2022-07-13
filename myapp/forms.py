@@ -102,6 +102,7 @@ class AdmissionUploadForm(forms.ModelForm):
             'category': 'Category',
             'father_photo': 'Father\'s Photo',
             'mother_photo': 'Mother\'s Photo',
+            'any_sibling': 'Any Sibling(s) studying in Blue Bird Public School?',
             # admission form
             'sealed_admission_doc': 'Upload the sealed admission form',
             # tc

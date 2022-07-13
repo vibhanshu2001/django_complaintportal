@@ -70,6 +70,7 @@
                             <th scope="col">Medical Issue</th>
                             <th scope="col">Last Attended Class</th>
                             <th scope="col">Admission form filled by</th>
+                            <th scope="col">Any Siblings</th>
 
                             <th scope="col">Last Schol</th>
                             <th scope="col">Subjects Studied</th>
@@ -110,17 +111,24 @@
                                     style="text-decoration: none;">DOB</a>
                                 <a class="text-sm badge bg-warning" href="{% url 'transfer_pdf' st.id %}"
                                     style="text-decoration: none;">Transfer</a>
+                                    {% if st.sealed_admission_doc %}
                                     <a class="text-sm badge bg-secondary" href="{{st.sealed_admission_doc.url}}"
                                     style="text-decoration: none;">Admission Form</a>
+                                    {% endif %}
+                                    
                             </td>
                             <td scope="row">{{st.sr_no}}</td>
                             <td>{{st.name_of_student}}</td>
+                            {% if st.student_photo %}
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<img class='img-fluid' src='{{st.student_photo.url}}'>"><img
                                         style="height: 20px; width: 20px" src="{{st.student_photo.url}}" alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
                             <td>{{st.date_of_registration}}</td>
                             <td>{{st.class_admission}}</td>
                             <td>{{st.date_of_birth}}</td>
@@ -129,6 +137,7 @@
                             <td>{{st.nationality}}</td>
                             <td>{{st.gender}}</td>
                             <td>{{st.aadhar_number}}</td>
+                            {% if st.student_aadhar_front %}
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.student_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.student_aadhar_back.url}}'>"><img
@@ -136,24 +145,35 @@
                                         alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                            
                             <td>{{st.last_attended_school}}</td>
                             <td>{{st.session}}</td>
                             <td>{{st.email}}</td>
                             <td>{{st.birth_place}}</td>
                             <td>{{st.disability}}</td>
                             <td>{{st.category}}</td>
+                            {% if st.father_photo %}
+                            
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<img class='img-fluid' src='{{st.father_photo.url}}'>"><img
                                         style="height: 20px; width: 20px" src="{{st.father_photo.url}}" alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
 
                             <td>{{st.father_name}}</td>
                             <td>{{st.father_qualification}}</td>
                             <td>{{st.father_occupation}}</td>
                             <td>{{st.father_mobile}}</td>
                             <td>{{st.father_address}}</td>
+                            {% if st.father_aadhar_front and st.father_aadhar_back %}
+                            
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.father_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.father_aadhar_back.url}}'>"><img
@@ -161,17 +181,28 @@
                                         alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                            {% if st.mother_photo %}
+                            
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<img class='img-fluid' src='{{st.mother_photo.url}}'>"><img
                                         style="height: 20px; width: 20px" src="{{st.mother_photo.url}}" alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
+                            
                             <td>{{st.mother_name}}</td>
                             <td>{{st.mother_qualification}}</td>
                             <td>{{st.mother_occupation}}</td>
                             <td>{{st.mother_mobile}}</td>
                             <td>{{st.mother_address}}</td>
+                            {% if st.mother_aadhar_front and st.mother_aadhar_back %}
+                            
                             <td class="text-center">
                                 <a data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true"
                                     data-bs-content="<b>Front</b><br><img class='img-fluid' src='{{st.mother_aadhar_front.url}}'><br><b>Back</b><img class='img-fluid' src='{{st.mother_aadhar_back.url}}'>"><img
@@ -179,9 +210,12 @@
                                         alt="" /></a>
 
                             </td>
+                            {% else %}
+                            <td></td>
+                            {% endif %}
                             <td>{{st.medical_issue}}</td>
                             <td>{{st.last_class}}</td>
-                            <td>{{st.form_filled_by}}</td>
+                            <td>{{st.form_filled_by}}</td><td>{{st.any_sibling}}</td>
 
                             <td>{{st.school_last_attended_with_result}}</td>
                             <td>{{st.subjects_studied}}</td>

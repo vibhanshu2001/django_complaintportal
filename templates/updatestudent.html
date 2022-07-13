@@ -165,6 +165,15 @@ Update Details
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 mb-0">
+                        {{ form.any_sibling|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card admission-card mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12 mb-0">
                         {{ form.medical_issue|as_crispy_field }}
                     </div>
                 </div>
