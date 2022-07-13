@@ -129,9 +129,9 @@
                             {% else %}
                             <td></td>
                             {% endif %}
-                            <td>{{st.date_of_registration}}</td>
+                            <td>{{st.date_of_registration|date:"d M, Y"}}</td>
                             <td>{{st.class_admission}}</td>
-                            <td>{{st.date_of_birth}}</td>
+                            <td>{{st.date_of_birth|date:"d M, Y"}}</td>
                             <td>{{st.religion}}</td>
                             <td>{{st.caste}}</td>
                             <td>{{st.nationality}}</td>

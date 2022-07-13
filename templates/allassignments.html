@@ -22,6 +22,7 @@ Update Details
             </tr>
         </thead>
         <tbody>
+            
             {% for i in assignment %}
             
             <tr>
@@ -35,6 +36,9 @@ Update Details
             {% endfor %}
         </tbody>
         </table>
+        {% if not assignment %}
+            No assignments till now!!
+            {% endif %}
     </div>
     
 

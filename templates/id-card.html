@@ -8,7 +8,9 @@
                     <p style="text-align:center;"><span style="font-size:15px;font-weight:bold">Blue Bird Public School</span>
                     <br>Sarai Nain Singh, Jewar (203135)
                     </p>
-                    <b>Name</b> {{IDCard.name_of_student | title}} <img src="{{IDCard.student_photo.url}}" alt=""> <br>
+                    <b>Name</b> {{IDCard.name_of_student | title}} {% if IDCard.student_photo %}
+                    <img src="{{IDCard.student_photo.url}}" alt="">
+                    {% endif %} <br>
                     <b>Class</b> {{IDCard.class_admission | title}} <br>
                     <b>Father's Name</b> {{IDCard.father_name | title}} <br>
                     <b>Mother's Name</b> {{IDCard.mother_name | title}} <br>
