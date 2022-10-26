@@ -130,7 +130,7 @@ def uploadgallery(request):
             new_record.uploaded_by = request.user.username
             new_record.save()
             messages.success(request, "Image Uploaded Successfully")
-            return redirect('/updategallery')
+            return redirect('/gallery')
     form = GalleryUploadForm()
     return render(request, 'upload_gallery.html',{'form': form})
 @login_required(login_url='handleLogin')
