@@ -76,7 +76,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-user"></i> Logout as
                         <b>{{request.user.username | title}}</b></a>
                         <a href="/portal"><i class="ti ti-server"></i> Admin Panel</a>
-                        <a href="/feesportal"><i class="ti ti-money"></i> Fees Portal</a>
+                        {% comment %} <a href="/feesportal"><i class="ti ti-money"></i> Fees Portal</a> {% endcomment %}
                 {% endif %}
                 {% if user.is_authenticated and not user.is_superuser %}
                 
@@ -94,10 +94,99 @@
             </ul>
         </div>
     </nav>
+    <div class="alert alert-primary mb-0" style="border:0 !important;">
+        <div class="text-end d-flex" style="font-size:0.9rem;">
+            <marquee>Admission are open from class Nursery to 8th. Session-2024-25. Visit school in office hours.</marquee>
+        </div>
+    </div>
     <!-- Header section end -->
     <!-- Hero section -->
     <section class="hero-section">
         <div class="hero-slider owl-carousel">
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/14.jpg' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/15.JPG' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/16.JPG' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/17.JPG' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/13.jpg' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/12.jpg' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
+                <div class="hs-text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="hs-subtitle p-1" style="background-color: white;display: inline;border-radius: 7px;">Best Public School in Jewar</div>
+                                <h2 class="hs-title mt-2">Small School, Big Heart <i class="ti ti-heart" style="color:red"></i></h2>
+                                <p class="hs-des">Our job as a school is to nourish those innate qualities by keeping stride with resources, opportunities, models and challenges that encourage that instinctive desire to understand, grow and contribute.</p>
+                                <div class="site-btn">ABOUT</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="hs-item set-bg" data-setbg="{% static 'img/site-img/11.jpg' %}" style="background-color: rgba(0,0,0,0.5);background-blend-mode: darken;">
                 <div class="hs-text">
                     <div class="container">
@@ -294,6 +383,15 @@
     <!-- Services section -->
     <section class="service-section spad" id="about" style="padding-top:20px !important">
         <div class="container services">
+            <div class="row" style="margin-bottom: 70px;">
+                <div class="col-12 text-center" style="display:flex;justify-content:center;align-items:center">
+                    <img src="{% static 'img/site-img/18.png' %}" style="height: auto;width:auto;border-radius: 13px;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23) !important;" class="img-fluid my-4" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="service-section spad" id="about" style="padding-top:0 !important">
+        <div class="container services">
             <div class="section-title text-center">
                 <h3>ABOUT US</h3>
                 <p>Cultivating character, intellect, and creativity
@@ -328,7 +426,7 @@
                         <i class="ti-crown"></i>
                     </div>
                     <div class="fact-text">
-                        <h2>10+</h2>
+                        <h2>15+</h2>
                         <p>YEARS</p>
                     </div>
                 </div>
@@ -346,7 +444,7 @@
                         <i class="ti-user"></i>
                     </div>
                     <div class="fact-text">
-                        <h2>500+</h2>
+                        <h2>5000+</h2>
                         <p>STUDENTS</p>
                     </div>
                 </div>
@@ -429,7 +527,7 @@ the community and to the nation as a whole.
 
 
     <!-- Enroll section -->
-    <section class="enroll-section spad set-bg" data-setbg="{% static 'img/site-img/9.jpg' %}">
+    <section class="enroll-section spad set-bg" data-setbg="{% static 'img/site-img/17.JPG' %}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -456,7 +554,7 @@ the community and to the nation as a whole.
                     </div>
                 </div>
                 <div class="col-lg-6 offset-lg-1 p-lg-0 p-4">
-                    <img style="border-radius: 13px;" src="{% static 'img/site-img/10.jpg' %}" alt="">
+                    <img style="border-radius: 13px;" src="{% static 'img/site-img/14.jpg' %}" alt="">
                 </div>
             </div>
         </div>
@@ -528,38 +626,6 @@ the community and to the nation as a whole.
         </div>
     </section>
     <!-- Services section end -->
-    <!-- Gallery section -->
-    <div class="gallery-section">
-        <div class="gallery">
-            <div class="grid-sizer"></div>
-            <div class="gallery-item gi-big set-bg" data-setbg="{% static 'img/site-img/11.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/11.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item set-bg" data-setbg="{% static 'img/site-img/2.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/2.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item set-bg" data-setbg="{% static 'img/site-img/3.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/3.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item gi-long set-bg" data-setbg="{% static 'img/site-img/4.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/4.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item gi-big set-bg" data-setbg="{% static 'img/site-img/staff.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/staff.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item gi-long set-bg" data-setbg="{% static 'img/site-img/6.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/6.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item set-bg" data-setbg="{% static 'img/site-img/7.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/7.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-            <div class="gallery-item set-bg" data-setbg="{% static 'img/site-img/8.jpg' %}">
-                <a class="img-popup" href="{% static 'img/site-img/8.jpg' %}"><i class="ti-plus"></i></a>
-            </div>
-        </div>
-        
-    </div>
-    <!-- Gallery section -->
 
     <button onclick="topFunction()" id="myBtn" title="Go to top" class="shadow-lg"><i class="fa fa-arrow-up"></i></button>
 
@@ -648,7 +714,7 @@ the community and to the nation as a whole.
                 </p>
                 <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=jDYmRwSEDjP2rTOrncpDov3YxEBda24B3ACRLiB0cD5qRVtaJiGqTff14zpj"></script></span>
                 <p>
-                    Website developed by <a href="tel:9045584464">Vibhanshu Garg</a> with <i class="ti ti-heart" style="color:red"></i>
+                    Website developed by <a target="_blank" href="https://www.linkedin.com/in/vibhanshu-garg">Vibhanshu Garg</a> with <i class="ti ti-heart" style="color:red"></i>
                 </p>
             </div>
         </div>
