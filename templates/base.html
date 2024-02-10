@@ -73,6 +73,11 @@
                     <a href="/uploadnotice"><i class='bx bxs-news'></i> Post Notice</a>
                 </li>
                 {% endif %}
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="/feesportal"><i class='bx bx-money'></i> Fees Portal</a>
+                </li>
+                {% endif %}
                 <li>
                     <a href="/"><i class='bx bx-arrow-back'></i> Back to site</a>
                 </li>

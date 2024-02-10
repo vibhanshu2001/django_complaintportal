@@ -76,6 +76,7 @@
                         data-bs-toggle="dropdown" aria-expanded="false"><i class="ti ti-user"></i> Logout as
                         <b>{{request.user.username | title}}</b></a>
                         <a href="/portal"><i class="ti ti-server"></i> Admin Panel</a>
+                        <a href="/feesportal"><i class="ti ti-money"></i> Fees Portal</a>
                 {% endif %}
                 {% if user.is_authenticated and not user.is_superuser %}
                 

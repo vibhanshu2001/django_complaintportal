@@ -131,7 +131,7 @@ class AdmissionUpload(models.Model):
     tc_prepared_by = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
-        return self.name_of_student
+        return str(self.name_of_student)
 class AssignmentUpload(models.Model):
     assignment_file = models.FileField(upload_to='assignment/')
     assignment_name = models.CharField(max_length=50, blank=True, null=True)
@@ -153,4 +153,11 @@ class NoticeUpload(models.Model):
     uploaded_by = models.CharField(max_length=100, blank=True, null=True)
     def __str__(self):
         return self.notice_desc
+
+class FeesData(models.Model):
+    student_name = models.ForeignKey("AdmissionUpload", on_delete=models.CASCADE,default="")
+    amount_due = models.IntegerField(blank=True, null=True)
+    def __str__(self):
+        return str(self.student_name)
+    
         

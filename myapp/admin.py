@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AdmissionUpload, AssignmentUpload, GalleryUpload, NoticeUpload
+from .models import AdmissionUpload, AssignmentUpload, GalleryUpload, NoticeUpload, FeesData
 # Register your models here.
 class AdmissionUploadAdmin(admin.ModelAdmin):
     list_display = ('id','name_of_student','date_of_registration','sr_no','class_admission','date_of_birth','religion','caste','nationality','gender','aadhar_number','student_aadhar_front','student_aadhar_back','father_name','father_qualification','father_occupation','father_mobile','father_address','father_aadhar_front','father_aadhar_back','mother_name','mother_qualification','mother_occupation','mother_mobile','mother_address','mother_aadhar_front','mother_aadhar_back','medical_issue','last_class','form_filled_by','student_photo','last_attended_school','session','email','birth_place','disability','category','father_photo','mother_photo','sealed_admission_doc','school_last_attended_with_result','subjects_studied','qualified_for_promotion','months_school_dues_paid','total_working_days','total_days_present','extra_curricular_activity','character_of_student','general_conduct','date_of_application_of_tc','reason_of_leaving','date_of_issuance_tc','tc_prepared_by','any_sibling')
@@ -10,11 +10,18 @@ class GalleryUploadAdmin(admin.ModelAdmin):
     list_display = ('gallery_file','uploaded_by')
 class NoticeUploadAdmin(admin.ModelAdmin):
     list_display = ('notice_desc','notice_file','date_of_posting','uploaded_by')
+class FeesDataAdmin(admin.ModelAdmin):
+    list_display = ('student_name','amount_due',)
 
 admin.site.register(AdmissionUpload,AdmissionUploadAdmin)
 admin.site.register(AssignmentUpload,AssignmentUploadAdmin)
 admin.site.register(GalleryUpload,GalleryUploadAdmin)
 admin.site.register(NoticeUpload,NoticeUploadAdmin)
+admin.site.register(FeesData,FeesDataAdmin)
+
+
+
+
 admin.site.site_header = "Blue Bird Public School"
 admin.site.site_title = "Major Admin Panel"
 admin.site.index_title = "Welcome Admin to BBPS Portal"

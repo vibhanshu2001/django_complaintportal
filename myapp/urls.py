@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('portal/',views.index, name="index"),
+    path('feesportal/',views.feesportal, name="feesportal"),
     path('',views.main, name="main"),
     path('gallery/',views.gallery, name="gallery"),
     path('updategallery/',views.updategallery, name="updategallery"),

@@ -151,6 +151,9 @@ def index(request):
     users = User.objects.all()
     
     return render(request, 'index.html',{'pi':pi,'us':us,'users':users,'ass':ass})
+def feesportal(request):
+    return render(request, 'feesportal.html')
+    
 @login_required(login_url='handleLogin')
 def character(request,id):
     pi = AdmissionUpload.objects.get(pk=id)
